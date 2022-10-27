@@ -6,15 +6,6 @@ const jwt = require('jsonwebtoken');
 
 const { registerValidation, loginValidation } = require('../validation/validation');
 
-router.get('/', (req, res) => {
-  res.send([
-    {
-      id: 1,
-      name: "test"
-    }
-  ]);
-});
-
 router.post('/register', async (req, res) => {
 
   //Validating data before creating user
