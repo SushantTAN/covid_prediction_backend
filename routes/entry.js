@@ -10,8 +10,12 @@ router.post('/create', async (req, res) => {
   const { error } = entryValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
+  let token = req.get('Authorization');
+  let decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+
   const newEntry = new Entry({
-    ...req.body
+    ...req.body,
+    user: decoded._id,
   });
 
   newEntry.save()

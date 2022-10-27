@@ -28,6 +28,10 @@ const covidEntry = new mongoose.Schema({
     required: true,
     enum: ['Yes', 'No']
   },
+  user: {
+    type: String,
+    require: true,
+  }
 });
 
 module.exports = mongoose.model('CovidEntry', covidEntry);
